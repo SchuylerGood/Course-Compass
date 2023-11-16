@@ -1,0 +1,19 @@
+# Ignore build folders
+build/
+build-*/
+bin/
+lib/
+out/
+
+# Ignore Qt-specific files
+*.pro.user
+*.user
+
+# Ignore CMake user-specific file
+CMakeLists.txt.user
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore macOS system files
+.DS_Store
