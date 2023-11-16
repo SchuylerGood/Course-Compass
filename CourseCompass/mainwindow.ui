@@ -17,10 +17,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>291</width>
-      <height>161</height>
+      <x>950</x>
+      <y>490</y>
+      <width>191</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>200</y>
+      <x>1010</x>
+      <y>450</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -39,6 +39,50 @@
     <property name="text">
      <string>Hello world</string>
     </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>901</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="ALL">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="COURSE1">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1131</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QWidget" name="CurrentCoursesPanel" native="true"/>
+     </item>
+     <item>
+      <widget class="QWidget" name="RecommendedActionPanel" native="true"/>
+     </item>
+     <item>
+      <widget class="QWidget" name="ProgressTrackerPanel" native="true"/>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -50,9 +94,18 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuCourse_Compass">
+    <property name="title">
+     <string>Course Compass</string>
+    </property>
+   </widget>
+   <addaction name="menuCourse_Compass"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
