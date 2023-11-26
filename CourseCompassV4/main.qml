@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import QtQuick.Controls
+import QtQuick.Controls 2.15
+import Custom 1.0
 
 Window {
     width: 1920
@@ -68,6 +69,13 @@ Window {
                         flat: true
                         font.pointSize: 24
                         font.bold: true
+                        onClicked: {
+                            createCourseButtonHandler.handleButtonClick();
+                        }
+                    }
+
+                    CreateCourseButtonHandler {
+                        id: createCourseButtonHandler
                     }
 
                     Column {

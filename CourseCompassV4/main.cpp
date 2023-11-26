@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include "createcoursebuttonhandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,7 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/main.qml")); // This gets the GUI info from the QML file
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,
@@ -19,7 +21,12 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         },
         Qt::QueuedConnection);
-    engine.load(url);
+
+    // This is where we add our button handler conections
+    qmlRegisterType<CreateCourseButtonHandler>("Custom", 1, 0, "CreateCourseButtonHandler");
+
+    engine.load(url); // This loads the main qml file into the engine
 
     return app.exec();
 }
+
