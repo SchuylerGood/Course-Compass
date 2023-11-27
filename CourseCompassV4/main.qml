@@ -71,7 +71,16 @@ Window {
                         font.bold: true
                         onClicked: {
                             createCourseButtonHandler.handleButtonClick();
+                            courseItemLoader.source = "CourseComponent.qml";
                         }
+                    }
+
+                    // Use Loader to dynamically load CourseItem.qml
+                    Loader {
+                        id: courseItemLoader
+                        width: 376
+                        height: 44
+                        // Set anchors, positioning, etc. as required
                     }
 
                     CreateCourseButtonHandler {

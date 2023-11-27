@@ -3,14 +3,17 @@
 
 #include <QObject>
 
-class CreateCourseButtonHandler : public QObject
-{
+class CreateCourseButtonHandler : public QObject {
     Q_OBJECT
 
 public:
-    CreateCourseButtonHandler(QObject *parent = nullptr);
+    explicit CreateCourseButtonHandler(QObject *parent = nullptr);
+
+signals:
+    void buttonClicked(); // Declaration of the signal
+
 public slots:
-    void handleButtonClick();
+    void handleButtonClick(); // Declaration of the slot to handle button clicks
 };
 
 #endif // CREATECOURSEBUTTONHANDLER_H
