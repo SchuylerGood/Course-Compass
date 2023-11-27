@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-import Custom 1.0
 
 Window {
     width: 1920
@@ -13,6 +12,7 @@ Window {
         id: page
         width: Constants.width
         height: Constants.height
+
         color: Constants.backgroundColor
 
         Column {
@@ -39,65 +39,7 @@ Window {
                 leftPadding: 0
                 spacing: 32
 
-                Rectangle {
-                    id: courseBox
-                    y: 0
-                    width: 456
-                    height: 296
-                    color: "#ECECEC"
-                    radius: 32
-
-                    Text { //cb = course box
-                        id: cbHeader
-                        x: 40
-                        y: 24
-                        width: 291
-                        height: 45
-                        text: qsTr("Current Courses")
-                        font.pixelSize: 32
-                        font.bold: true
-                    }
-
-                    Button {
-                        id: cbNewCourseButton
-                        x: 398
-                        y: 31
-                        width: 32
-                        height: 32
-                        text: qsTr("+")
-                        spacing: 0
-                        flat: true
-                        font.pointSize: 24
-                        font.bold: true
-                        onClicked: {
-                            //<Change this part>
-                        }
-                    }
-
-                    ListView {
-                        id: courseListView
-                        width: 376 // Set the width of the ListView as needed
-                        height: 500 // Set the height of the ListView as needed
-
-                        model: ListModel {
-                            id: courseModel
-                            // Define the model properties if needed for CourseItem components
-                        }
-
-                        delegate: Loader {
-                            id: courseComponentLoader
-                            width: courseListView.width // Set the width based on ListView width
-                            sourceComponent: CourseComponent {} // Default empty CourseItem as sourceComponent
-
-                            onLoaded: {
-                                if (status === Loader.Ready) {
-                                    var course = courseComponentLoader.item;
-                                    // Set properties or handle initialization of CourseItem here if needed
-                                }
-                            }
-                        }
-                    }
-                }
+                CourseBox {}
 
                 Rectangle { // = rab
                     id: recommendedActionBox

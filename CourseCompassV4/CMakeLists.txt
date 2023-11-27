@@ -21,7 +21,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(CourseCompassV4
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        createcoursebuttonhandler.h createcoursebuttonhandler.cpp
+        page.h page.cpp
+
 
     )
 # Define target properties for Android with Qt 6 as:

@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>CourseComponent.qml</file>
+        <file>CourseBox.qml</file>
     </qresource>
 </RCC>

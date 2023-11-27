@@ -1,14 +1,18 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "createcoursebuttonhandler.h"
+#include "page.h"
 
 int main(int argc, char *argv[])
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+
+    #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+        QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    #endif
+
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<Page>("MyPage", 1, 0, "Page");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml")); // This gets the GUI info from the QML file
@@ -21,9 +25,6 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         },
         Qt::QueuedConnection);
-
-    // This is where we add our button handler conections
-    qmlRegisterType<CreateCourseButtonHandler>("Custom", 1, 0, "CreateCourseButtonHandler");
 
     engine.load(url); // This loads the main qml file into the engine
 
