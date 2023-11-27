@@ -8,15 +8,15 @@ Window {
     height: 1080
     visible: true
     title: qsTr("Hello World")
+
     Rectangle {
-        id: rectangle4
+        id: page
         width: Constants.width
         height: Constants.height
-
         color: Constants.backgroundColor
 
         Column {
-            id: column
+            id: paneSeparatorColumn
             x: 0
             y: 0
             width: 1920
@@ -28,8 +28,8 @@ Window {
             bottomPadding: 32
             topPadding: 32
 
-            Row {
-                id: row
+            Row { // Top part with current courses, and recommended action boxes, progress tracker.
+                id: informationRow
                 x: 48
                 y: 0
                 width: 1824
@@ -40,15 +40,15 @@ Window {
                 spacing: 32
 
                 Rectangle {
-                    id: rectangle
+                    id: courseBox
                     y: 0
                     width: 456
                     height: 296
-                    color: "#ffffff"
+                    color: "#ECECEC"
                     radius: 32
 
-                    Text {
-                        id: text1
+                    Text { //cb = course box
+                        id: cbHeader
                         x: 40
                         y: 24
                         width: 291
@@ -59,7 +59,7 @@ Window {
                     }
 
                     Button {
-                        id: button
+                        id: cbNewCourseButton
                         x: 398
                         y: 31
                         width: 32
@@ -70,96 +70,48 @@ Window {
                         font.pointSize: 24
                         font.bold: true
                         onClicked: {
-                            createCourseButtonHandler.handleButtonClick();
-                            courseItemLoader.source = "CourseComponent.qml";
+                            //<Change this part>
                         }
                     }
 
-                    // Use Loader to dynamically load CourseItem.qml
-                    Loader {
-                        id: courseItemLoader
-                        width: 376
-                        height: 44
-                        // Set anchors, positioning, etc. as required
-                    }
+                    ListView {
+                        id: courseListView
+                        width: 376 // Set the width of the ListView as needed
+                        height: 500 // Set the height of the ListView as needed
 
-                    CreateCourseButtonHandler {
-                        id: createCourseButtonHandler
-                    }
-
-                    Column {
-                        id: column1
-                        x: 40
-                        y: 81
-                        width: 397
-                        height: 215
-                        spacing: 4
-
-                        CourseComponent {
-
+                        model: ListModel {
+                            id: courseModel
+                            // Define the model properties if needed for CourseItem components
                         }
 
-                        Rectangle {
-                            id: course4
-                            x: 0
-                            width: 376
-                            height: 44
-                            color: "#e9e9e9"
-                            radius: 8
-                            Row {
-                                id: row4
-                                y: 0
-                                anchors.left: parent.left
-                                anchors.right: parent.right
-                                anchors.top: parent.top
-                                anchors.bottom: parent.bottom
-                                topPadding: 12
-                                spacing: 24
-                                leftPadding: 24
-                                Rectangle {
-                                    id: rectangle8
-                                    width: 24
-                                    height: 24
-                                    color: "#ffbfbf"
-                                    radius: 12
-                                }
+                        delegate: Loader {
+                            id: courseComponentLoader
+                            width: courseListView.width // Set the width based on ListView width
+                            sourceComponent: CourseComponent {} // Default empty CourseItem as sourceComponent
 
-                                Text {
-                                    id: text8
-                                    text: qsTr("COURSE 1")
-                                    font.pixelSize: 15
-                                    horizontalAlignment: Text.AlignLeft
-                                    verticalAlignment: Text.AlignVCenter
-                                    font.bold: true
+                            onLoaded: {
+                                if (status === Loader.Ready) {
+                                    var course = courseComponentLoader.item;
+                                    // Set properties or handle initialization of CourseItem here if needed
                                 }
-
-                                Text {
-                                    id: text9
-                                    text: qsTr("This is the full course title")
-                                    font.pixelSize: 15
-                                    horizontalAlignment: Text.AlignLeft
-                                    verticalAlignment: Text.AlignVCenter
-                                    font.bold: false
-                                }
-                                anchors.topMargin: 0
                             }
                         }
                     }
                 }
 
-                Rectangle {
-                    id: rectangle1
+                Rectangle { // = rab
+                    id: recommendedActionBox
                     width: 456
                     height: 296
-                    color: "#ffffff"
+                    color: "#ECECEC"
                     radius: 32
                 }
 
-                Rectangle {
-                    id: rectangle2
+                Rectangle { // = ptb
+                    id: progressTrackerBox
                     width: 846
                     height: 296
-                    color: "#ffffff"
+                    color: "#ECECEC"
                     radius: 32
                 }
             }

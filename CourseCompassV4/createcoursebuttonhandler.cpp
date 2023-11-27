@@ -12,5 +12,4 @@ CreateCourseButtonHandler::CreateCourseButtonHandler(QObject *parent) : QObject(
 void CreateCourseButtonHandler::handleButtonClick()
 {
     qDebug() << "Button clicked";
-    emit buttonClicked();
 }

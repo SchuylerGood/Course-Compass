@@ -9,9 +9,6 @@ class CreateCourseButtonHandler : public QObject {
 public:
     explicit CreateCourseButtonHandler(QObject *parent = nullptr);
 
-signals:
-    void buttonClicked(); // Declaration of the signal
-
 public slots:
     void handleButtonClick(); // Declaration of the slot to handle button clicks
 };
