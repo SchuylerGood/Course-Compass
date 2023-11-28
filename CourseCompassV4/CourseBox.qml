@@ -10,6 +10,15 @@ Rectangle {
     color: "#ECECEC"
     radius: 32
 
+    function generateRandomColor() {
+        // Generate random RGB values for the color
+        var red = Math.random() * 255;
+        var green = Math.random() * 255;
+        var blue = Math.random() * 255;
+        // Construct and return the color string in "#RRGGBB" format
+        return "#" + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16);
+    }
+
     Text { //cb = course box
         id: cbHeader
         x: 40
@@ -33,7 +42,7 @@ Rectangle {
         font.pointSize: 24
         font.bold: true
         onClicked: {
-            courseListModel.append({ "courseCode": "Code", "courseName": "Name", "courseColor": "blue"});
+            courseListModel.append({ "courseCode": "Code", "courseName": "Name", "courseColor": generateRandomColor()});
         }
     }
 
@@ -79,15 +88,6 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: {
                             courseListModel.setProperty(index, "courseColor", generateRandomColor())
-                        }
-
-                        function generateRandomColor() {
-                            // Generate random RGB values for the color
-                            var red = Math.random() * 255;
-                            var green = Math.random() * 255;
-                            var blue = Math.random() * 255;
-                            // Construct and return the color string in "#RRGGBB" format
-                            return "#" + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16);
                         }
                     }
                 }
