@@ -291,6 +291,34 @@ Rectangle {
                         }
                     }
                 }
+
+                Rectangle {
+                    id: rectangle10
+                    width: 1181
+                    height: 36
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Row {
+                        id: sampleItem2
+                        x: 0
+                        y: 0
+                        width: 1182
+                        height: 36
+                        topPadding: 0
+
+                        Rectangle {
+                            id: rectangle4
+                            width: 96
+                            height: 32
+                            color: "#ffdebf"
+                            radius: 16
+                            border.color: "#d9d9d9"
+                            border.width: 0
+                        }
+                    }
+                }
             }
         }
     }
