@@ -33,13 +33,7 @@ Rectangle {
         font.pointSize: 24
         font.bold: true
         onClicked: {
-            // Call populateListModel with your data
-            courseBox.populateListModel([
-                ["CISC 101", "Introduction to Computer Science", "blue"],
-                ["CISC 124", "Introduction to Computer Science II", "red"],
-                ["CISC 235", "Data Structures", "green"],
-                // Add more tuples as needed
-            ]);
+            courseListModel.append({ "courseCode": "Code", "courseName": "Name", "courseColor": "blue"});
         }
     }
 
@@ -78,35 +72,58 @@ Rectangle {
                    height: 30
                    radius: 180
                    color: courseColor
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            courseListModel.setProperty(index, "courseColor", generateRandomColor())
+                        }
+
+                        function generateRandomColor() {
+                            // Generate random RGB values for the color
+                            var red = Math.random() * 255;
+                            var green = Math.random() * 255;
+                            var blue = Math.random() * 255;
+                            // Construct and return the color string in "#RRGGBB" format
+                            return "#" + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16);
+                        }
+                    }
                 }
 
-                Text {
-                    id: courseCodeText
+                // Editable TextField for course code
+                TextField {
+                    id: courseCodeField
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: courseColorCircle.right
                     anchors.leftMargin: 20
-                    text: courseCode
+                    width: (parent.width - courseColorCircle.width) / 3 // Adjust width as needed
+                    placeholderText: "Enter course code"
+                    text: courseCode // Bind to the model data
                     font.bold: true
                     font.pixelSize: 16
+                    onTextChanged: {
+                        // Update the model data when the text changes
+                        courseListModel.setProperty(index, "courseCode", courseCodeField.text)
+                    }
                 }
 
-                Text {
-                    id: courseNameText
+                // Editable TextField for course name
+                TextField {
+                    id: courseNameField
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.topMargin: 10
-                    anchors.left: courseCodeText.right
+                    anchors.left: courseCodeField.right
                     anchors.leftMargin: 20
-                    text: courseName
+                    width: parent.width - courseCodeField.width - courseColorCircle.width - 70 // Adjust width as needed
+                    placeholderText: "Enter course name"
+                    text: courseName // Bind to the model data
                     font.pixelSize: 14
+                    onTextChanged: {
+                       // Update the model data when the text changes
+                       courseListModel.setProperty(index, "courseName", courseNameField.text)
+                    }
                 }
             }
-        }
-    }
-
-    function populateListModel(courseArray) {
-        for (var i = 0; i < courseArray.length; ++i) {
-            var course = courseArray[i];
-            courseListModel.append({ "courseCode": course[0], "courseName": course[1], "courseColor": course[2]});
         }
     }
 }
