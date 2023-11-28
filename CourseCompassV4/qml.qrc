@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>CourseBox.qml</file>
+        <file>ItemPane.qml</file>
+        <file>RecommendedActionBox.qml</file>
+        <file>ProgressTrackerBox.qml</file>
     </qresource>
 </RCC>
