@@ -63,16 +63,18 @@ Rectangle {
                 color: "white"
                 radius: 10
 
+                // Wrapper for the colour 'button'. Doing it like this prevents click and hover effects
                 Rectangle {
-                   id: courseColorCircle
-                   anchors.verticalCenter: parent.verticalCenter
-                   anchors.left: parent.left
-                   anchors.leftMargin: 10
-                   width: 30
-                   height: 30
-                   radius: 180
-                   color: courseColor
+                    id: courseColorCircle
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+                    width: 30
+                    height: 30
+                    radius: 180
+                    color: courseColor
 
+                    // The actual clickable part
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {

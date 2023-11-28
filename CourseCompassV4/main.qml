@@ -43,13 +43,7 @@ Window {
 
                 RecommendedActionBox {}
 
-                Rectangle { // = ptb
-                    id: progressTrackerBox
-                    width: 846
-                    height: 296
-                    color: "#ECECEC"
-                    radius: 32
-                }
+                ProgressTrackerBox {}
             }
 
             ItemPane {}
