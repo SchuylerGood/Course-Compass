@@ -114,13 +114,40 @@ Rectangle {
                     anchors.topMargin: 10
                     anchors.left: courseCodeField.right
                     anchors.leftMargin: 20
-                    width: parent.width - courseCodeField.width - courseColorCircle.width - 70 // Adjust width as needed
+                    width: parent.width - courseCodeField.width - courseColorCircle.width - 100 // Adjust width as needed
                     placeholderText: "Enter course name"
                     text: courseName // Bind to the model data
                     font.pixelSize: 14
                     onTextChanged: {
                        // Update the model data when the text changes
                        courseListModel.setProperty(index, "courseName", courseNameField.text)
+                    }
+                }
+
+                Rectangle {
+                    id: courseDeleteButton
+                    anchors.right: parent.right
+                    anchors.rightMargin: 10
+                    anchors.top: parent.top
+                    anchors.topMargin: 5
+                    width: 30
+                    height: 30
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.right: parent.right
+                        anchors.rightMargin: 10
+                        text: qsTr("x")
+                        font.pointSize: 20
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            if (courseListModel.count > 0) {
+                                courseListModel.remove(index)
+                            }
+                        }
                     }
                 }
             }
