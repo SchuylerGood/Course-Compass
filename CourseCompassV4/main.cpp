@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    // This is where we define our QML type from page.cpp
     qmlRegisterType<Page>("MyPage", 1, 0, "Page");
 
     QQmlApplicationEngine engine;
