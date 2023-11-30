@@ -23,8 +23,8 @@ Rectangle { // = ptb
 
     Rectangle{
         id: progressTrackerBoxWhite
-        anchors.centerIn: parent
-        anchors.topMargin: 100
+        anchors.top: cbHeader.bottom
+        anchors.topMargin: 0
         anchors.horizontalCenter: parent.horizontalCenter
         width: 300
         height: 200
@@ -47,9 +47,9 @@ Rectangle { // = ptb
                     Shape {
                         width: 200
                         height: 200
-                        anchors.top: progressTrackerBoxWhite.top
-                        anchors.left: progressTrackerBoxWhite.left
-                        anchors.bottom: progressTrackerBoxWhite.bottom
+                        scale: 0.7
+                        anchors.centerIn: progressTrackerBoxWhite
+
                         //Enable multisampled rendering
                         layer.enabled: true
                         layer.samples: 4
