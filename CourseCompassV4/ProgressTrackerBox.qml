@@ -82,11 +82,22 @@ Rectangle { // = ptb
 
         }
         Text {
+                    id: complete
                     text: "Completed"
                     font.pixelSize: 16
                     color: "blue"
-                    anchors.left: progressTrackerBoxWhite - 30
-                    anchors.verticalCenter: progressTrackerBoxWhite.verticalCenter + 6
+                    x: 180
+                    y: 80
+                    anchors.verticalCenter: Shape
+
+                }
+        Text {
+                    text: "To Do"
+                    font.pixelSize: 16
+                    color: "gray"
+                    x: 180
+                    y: 120
+
 
                 }
     }
