@@ -43,7 +43,9 @@ Window {
 
                 RecommendedActionBox {}
 
-                ProgressTrackerBox {}
+                ProgressTrackerBox {
+
+                }
             }
 
             ItemPane {}
