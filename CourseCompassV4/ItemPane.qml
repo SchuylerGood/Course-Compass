@@ -225,10 +225,8 @@ Rectangle {
                 anchors.leftMargin: 0
                 anchors.top: parent.top
                 anchors.topMargin: 40
-
                 width: 1181
                 height: 633
-
 
                 // Add Item
                 Button {

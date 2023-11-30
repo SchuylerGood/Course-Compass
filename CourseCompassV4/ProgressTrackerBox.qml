@@ -44,62 +44,60 @@ Rectangle { // = ptb
             bottomPadding: 32
             topPadding: 32
 
-                    Shape {
-                        width: 200
-                        height: 200
-                        scale: 0.7
-                        anchors.centerIn: progressTrackerBoxWhite
-                        //Enable multisampled rendering
-                        layer.enabled: true
-                        layer.samples: 4
+            Shape {
+                width: 200
+                height: 200
+                scale: 0.7
+                anchors.centerIn: progressTrackerBoxWhite
+                //Enable multisampled rendering
+                layer.enabled: true
+                layer.samples: 4
 
-                        ShapePath {
-                            fillColor: "transparent"
-                            strokeColor: "gray"
-                            strokeWidth: 20
-                            capStyle: ShapePath.RoundCap
-                            PathAngleArc {
-                                centerX: 100; centerY: 100
-                                radiusX: 100-20/2; radiusY: 100-20/2
-                                startAngle: 135
-                                sweepAngle: 270
-                            }
-                        }
-
-                        ShapePath {
-                            fillColor: "transparent"
-                            strokeColor: "blue"
-                            strokeWidth: 20
-                            capStyle: ShapePath.RoundCap
-                            PathAngleArc {
-                                centerX: 100; centerY: 100
-                                radiusX: 100-20/2; radiusY: 100-20/2
-                                startAngle: 135
-                                sweepAngle: 180
-                            }
-                        }
+                ShapePath {
+                    fillColor: "transparent"
+                    strokeColor: "gray"
+                    strokeWidth: 20
+                    capStyle: ShapePath.RoundCap
+                    PathAngleArc {
+                        centerX: 100; centerY: 100
+                        radiusX: 100-20/2; radiusY: 100-20/2
+                        startAngle: 135
+                        sweepAngle: 270
                     }
+                }
 
+                ShapePath {
+                    fillColor: "transparent"
+                    strokeColor: "blue"
+                    strokeWidth: 20
+                    capStyle: ShapePath.RoundCap
+                    PathAngleArc {
+                        centerX: 100; centerY: 100
+                        radiusX: 100-20/2; radiusY: 100-20/2
+                        startAngle: 135
+                        sweepAngle: 180
+                    }
+                }
+            }
         }
+
         Text {
-                    id: complete
-                    text: "Completed"
-                    font.pixelSize: 16
-                    color: "blue"
-                    x: 180
-                    y: 80
-                    anchors.verticalCenter: Shape
+            id: complete
+            text: "Completed"
+            font.pixelSize: 16
+            color: "blue"
+            x: 180
+            y: 80
+            anchors.verticalCenter: Shape
+        }
 
-                }
         Text {
-                    text: "To Do"
-                    font.pixelSize: 16
-                    color: "gray"
-                    x: 180
-                    y: 120
-
-
-                }
+            text: "To Do"
+            font.pixelSize: 16
+            color: "gray"
+            x: 180
+            y: 120
+        }
     }
 
 

@@ -23,6 +23,7 @@ Row {
             anchors.fill: parent
         }
     }
+
     Button {
         id: courseTab1
         y: 0
@@ -36,6 +37,7 @@ Row {
             anchors.fill: parent
         }
     }
+
     Button {
         id: courseTab2
         y: 0
@@ -49,6 +51,7 @@ Row {
             anchors.fill: parent
         }
     }
+
     Button {
         id: courseTab3
         y: 0
@@ -62,6 +65,7 @@ Row {
             anchors.fill: parent
         }
     }
+
     Button {
         id: courseTab4
         y: 0

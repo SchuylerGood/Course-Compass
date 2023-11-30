@@ -46,51 +46,51 @@ Rectangle { // = rab
             }
 
             ListView {
-                    anchors.fill: parent
-                    model: courseListModel
-                    clip: true
-                    spacing: 5
+                anchors.fill: parent
+                model: courseListModel
+                clip: true
+                spacing: 5
 
-                    delegate: Rectangle {
-                        height: 50
-                        width: parent.width
-                        color: "white"
-                        radius: 10
+                delegate: Rectangle {
+                    height: 50
+                    width: parent.width
+                    color: "white"
+                    radius: 10
 
-                        // Color circle
-                        Rectangle {
-                            id: courseColorField
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.left
-                            anchors.leftMargin: 10
-                            width: 30
-                            height: 30
-                            radius: 180
-                            color: model.courseColor
-                        }
+                    // Color circle
+                    Rectangle {
+                        id: courseColorField
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        anchors.leftMargin: 10
+                        width: 30
+                        height: 30
+                        radius: 180
+                        color: model.courseColor
+                    }
 
-                        // Display course name
-                                    Text {
-                                        id: courseCodeField
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        anchors.left: courseColorField.right
-                                        width: parent.width / 5 // 1/5th of the width
-                                        text: model.courseCode
-                                        font.pixelSize: 16
-                                        horizontalAlignment: Text.AlignHCenter
-                                    }
+                    // Display course name
+                    Text {
+                        id: courseCodeField
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: courseColorField.right
+                        width: parent.width / 5 // 1/5th of the width
+                        text: model.courseCode
+                        font.pixelSize: 16
+                        horizontalAlignment: Text.AlignHCenter
+                    }
 
-                                    // Display item name
-                                    Text {
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        anchors.left: courseCodeField.right
-                                        width: parent.width * 3 / 5 // 3/5ths of the width
-                                        text: model.item
-                                        font.pixelSize: 16
-                                        horizontalAlignment: Text.AlignHCenter
-                                    }
+                    // Display item name
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: courseCodeField.right
+                        width: parent.width * 3 / 5 // 3/5ths of the width
+                        text: model.item
+                        font.pixelSize: 16
+                        horizontalAlignment: Text.AlignHCenter
                     }
                 }
+            }
         }
     }
 }
