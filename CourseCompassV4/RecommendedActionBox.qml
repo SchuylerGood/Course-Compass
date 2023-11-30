@@ -9,20 +9,25 @@ Rectangle { // = rab
     color: "#ECECEC"
     radius: 32
 
-    Column {
-        anchors.fill: parent
-        spacing: 10
+    Text { //cb = course box
+        id: cbHeader
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.topMargin: 24
+        anchors.leftMargin: 40
+        width: 300
+        height: 48
+        text: qsTr("Recommended Actions")
+        font.pixelSize: 32
+        font.bold: true
+    }
 
-        Text { //cb = course box
-            id: cbHeader
-            x: 40
-            y: 24
-            width: 300
-            height: 48
-            text: qsTr("Recommended Actions")
-            font.pixelSize: 32
-            font.bold: true
-        }
+    Column {
+        width: parent.width
+        height: parent.height
+        anchors.top: parent.top
+        anchors.topMargin: 80
+        spacing: 10
 
         Rectangle { // Container for the list
             color: "#ECECEC"
