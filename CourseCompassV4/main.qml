@@ -10,17 +10,16 @@ Window {
 
     Rectangle {
         id: page
-        width: Constants.width
-        height: Constants.height
-
+        width: parent.width
+        height: parent.height
         color: Constants.backgroundColor
 
         Column {
             id: paneSeparatorColumn
-            x: 0
-            y: 0
-            width: 1920
-            height: 1080
+            width: parent.width
+            height: parent.height
+            anchors.left: parent.left
+            anchors.right: parent.right
             transformOrigin: Item.Center
             spacing: 32
             rightPadding: 32
@@ -30,14 +29,14 @@ Window {
 
             Row { // Top part with current courses, and recommended action boxes, progress tracker.
                 id: informationRow
-                x: 48
-                y: 0
-                width: 1824
+                width: parent.width
                 height: 296
                 topPadding: 0
                 rightPadding: 16
-                leftPadding: 0
+                leftPadding: 48
                 spacing: 32
+                anchors.left: parent.left
+                anchors.right: parent.right
 
                 CourseBox {}
 

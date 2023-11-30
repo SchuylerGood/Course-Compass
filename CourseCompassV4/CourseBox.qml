@@ -4,8 +4,7 @@ import QtQuick.Controls 2.15
 
 Rectangle {
     id: courseBox
-    y: 0
-    width: 456
+    width: (parent.width / 3) - 54
     height: 296
     color: "#ECECEC"
     radius: 32
@@ -32,8 +31,10 @@ Rectangle {
 
     Button {
         id: cbNewCourseButton
-        x: 398
-        y: 31
+        anchors.right: parent.right
+        anchors.rightMargin: 24
+        anchors.top: parent.top
+        anchors.topMargin: 24
         width: 32
         height: 32
         text: qsTr("+")

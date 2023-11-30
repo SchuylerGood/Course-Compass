@@ -5,7 +5,7 @@ import QtQuick.Shapes
 
 Rectangle { // = ptb
     id: progressTrackerBox
-    width: 400
+    width: (parent.width / 3) - 54
     height: 296
     color: "#ECECEC"
     radius: 32

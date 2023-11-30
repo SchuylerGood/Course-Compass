@@ -4,27 +4,29 @@ import QtQuick.Controls 2.15
 
 Rectangle {
     id: itemsPaneHolder
-    x: 48
-    y: 340
-    width: 1820
-    height: 700
+    width: parent.width
+    height: parent.height / 2.15
     color: "#00ffffff"
     radius: 0
     transformOrigin: Item.Center
+    anchors.left: parent.left
+    anchors.right: parent. right
+    anchors.leftMargin: 48
+    anchors.rightMargin: 48
 
     Column {
         id: itemsPaneWrapper
-        x: 0
-        y: 0
-        width: 1824
-        height: 700
+        width: parent.width
+        height: parent.height
+        anchors.left: parent.left
+        anchors.right: parent.right
 
         Tabs {}
 
         Rectangle {
             id: itemsPane
-            width: 1824
-            height: 672
+            width: parent.width
+            height: parent.height
             color: "#ffffff"
             radius: 32
             border.color: "#d9d9d9"
@@ -38,8 +40,6 @@ Rectangle {
                 height: 672
                 rows: 1
                 columns: 8
-
-
 
                 Rectangle {
                     id: course
@@ -187,7 +187,7 @@ Rectangle {
 
                 // Reapeter
                 Repeater {
-//                    model: columnLabelGrid.rows * columnLabelGrid.columns
+//                    model: columnLabelGrid.rows * columnLabelGrid.columns This generates a whole row of duplicates
                     model: columnLabelGrid.rows
 
                     Rectangle {

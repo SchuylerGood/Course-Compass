@@ -4,7 +4,7 @@ import QtQuick.Controls 2.15
 
 Rectangle { // = rab
     id: recommendedActionBox
-    width: 456
+    width: (parent.width / 3) - 54
     height: 296
     color: "#ECECEC"
     radius: 32
