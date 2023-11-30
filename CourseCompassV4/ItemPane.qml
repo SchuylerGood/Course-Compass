@@ -34,10 +34,12 @@ Rectangle {
                 id: columnLabelGrid
                 x: 0
                 y: 0
-                width: 1824
+                width: 2000
                 height: 672
                 rows: 1
                 columns: 8
+
+
 
                 Rectangle {
                     id: course
@@ -182,68 +184,64 @@ Rectangle {
                         font.bold: true
                     }
                 }
-            }
 
-            Column {
-                id: itemHolder
-                x: 0
-                y: 39
-                width: 1181
-                height: 633
+                // Reapeter
+                Repeater {
+//                    model: columnLabelGrid.rows * columnLabelGrid.columns
+                    model: columnLabelGrid.rows
 
-                Rectangle {
-                    id: rectangle9
-                    width: 1181
-                    height: 36
-                    color: "#ffffff"
-                    border.color: "#d9d9d9"
-                    border.width: 2
+                    Rectangle {
+                        id: rectangle3
+                        width: 96
+                        height: 32
+                        color: "#ffdebf"
+                        radius: 16
+                        border.color: "#d9d9d9"
+                        border.width: 0
 
-                    Row {
-                        id: sampleItem1
-                        x: 0
-                        y: 0
-                        width: 1182
-                        height: 36
-                        topPadding: 0
-
-                        Rectangle {
-                            id: rectangle3
-                            width: 96
-                            height: 32
-                            color: "#ffdebf"
-                            radius: 16
-                            border.color: "#d9d9d9"
-                            border.width: 0
+                        TextField {
+                            id: itemNameField
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.left: courseColorCircle.right
+                            anchors.leftMargin: 20
+                            width: (parent.width - courseColorCircle.width) / 3 // Adjust width as needed
+                            placeholderText: "Enter course code"
+                            text: courseCode // Bind to the model data
+                            font.bold: true
+                            font.pixelSize: 16
+                            onTextChanged: {
+                                // Update the model data when the text changes
+                                courseListModel.setProperty(index, "courseCode", courseCodeField.text)
+                            }
                         }
                     }
                 }
+            }
 
-                Rectangle {
-                    id: rectangle10
-                    width: 1181
-                    height: 36
-                    color: "#ffffff"
-                    border.color: "#d9d9d9"
-                    border.width: 2
+            // TTHIS HOLDS ALL THE ITEMS!!!!
+            Column {
+                id: itemHolder
+                anchors.left: parent.left
+                anchors.leftMargin: 0
+                anchors.top: parent.top
+                anchors.topMargin: 40
 
-                    Row {
-                        id: sampleItem2
-                        x: 0
-                        y: 0
-                        width: 1182
-                        height: 36
-                        topPadding: 0
+                width: 1181
+                height: 633
 
-                        Rectangle {
-                            id: rectangle4
-                            width: 96
-                            height: 32
-                            color: "#ffdebf"
-                            radius: 16
-                            border.color: "#d9d9d9"
-                            border.width: 0
-                        }
+
+                // Add Item
+                Button {
+                    id: itemAdd
+                    width: 32
+                    height: 32
+                    text: qsTr("+")
+                    spacing: 0
+                    flat: true
+                    font.pointSize: 24
+                    font.bold: true
+                    onClicked: {
+                        columnLabelGrid.rows += 1;
                     }
                 }
             }
