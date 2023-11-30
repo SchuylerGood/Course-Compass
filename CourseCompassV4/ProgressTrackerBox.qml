@@ -49,7 +49,6 @@ Rectangle { // = ptb
                         height: 200
                         scale: 0.7
                         anchors.centerIn: progressTrackerBoxWhite
-
                         //Enable multisampled rendering
                         layer.enabled: true
                         layer.samples: 4
@@ -82,6 +81,14 @@ Rectangle { // = ptb
                     }
 
         }
+        Text {
+                    text: "Completed"
+                    font.pixelSize: 16
+                    color: "blue"
+                    anchors.left: progressTrackerBoxWhite - 30
+                    anchors.verticalCenter: progressTrackerBoxWhite.verticalCenter + 6
+
+                }
     }
 
 
