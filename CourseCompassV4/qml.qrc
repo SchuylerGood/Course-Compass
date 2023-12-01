@@ -6,5 +6,6 @@
         <file>RecommendedActionBox.qml</file>
         <file>ProgressTrackerBox.qml</file>
         <file>Tabs.qml</file>
+        <file>TemplatePage.qml</file>
     </qresource>
 </RCC>

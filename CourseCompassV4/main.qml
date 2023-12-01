@@ -21,12 +21,16 @@ Window {
             TabBar {
                 id: tabBar
                 Layout.fillWidth: true
+                height: tabBarContainer.height
+                bottomInset: 0
             }
         }
 
         Component {
             id: tabButtonComponent
-            TabButton {}
+            TabButton {
+                width: 72
+            }
         }
 
         Button {
@@ -34,54 +38,29 @@ Window {
             Layout.alignment: Qt.AlignHCenter
 
             onClicked: {
-                var ta = tabButtonComponent.createObject(tabBar, {text: "Tab " + (tabBar.count + 1)})
-                tabBar.addTab(tab)
-            }
-        }
-
-
-        Rectangle {
-            id: page
-            width: Constants.width
-            height: Constants.height
-            z: 0
-            color: Constants.backgroundColor
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            Column {
-                id: paneSeparatorColumn
-                width: parent.width
-                height: parent.height
-                anchors.left: parent.left
-                anchors.right: parent.right
-                transformOrigin: Item.Center
-                spacing: 32
-                rightPadding: 32
-                leftPadding: 0
-                bottomPadding: 32
-                topPadding: 32
-
-                Row { // Top part with current courses, and recommended action boxes, progress tracker.
-                    id: informationRow
-                    width: parent.width
-                    height: 296
-                    topPadding: 0
-                    rightPadding: 16
-                    leftPadding: 48
-                    spacing: 32
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-
-                    CourseBox {}
-
-                    RecommendedActionBox {}
-
-                    ProgressTrackerBox {}
+                if (tabBar.count < 20){
+                    var newTabButton = tabButtonComponent.createObject(tabBar, { text: "Tab " + (tabBar.count + 1)})
+                    tabBar.addItem(newTabButton)
                 }
-
-                ItemPane {}
+                else {
+                    warningDialog.open()
+                    warningDialog.x = (mainLayout.width - warningDialog.width) / 2
+                    warningDialog.y = (mainLayoout.height - warningDialog.height) / 2
+                }
             }
         }
+
+        Dialog {
+            id: warningDialog
+            modal: true
+            standardButtons: Dialog.Ok
+            title: "Warning"
+
+            contentItem: Text {
+                text: "Reached maximum of 20 tabs. Cannot add more."
+            }
+        }
+
+        TemplatePage {}
     }
 }
