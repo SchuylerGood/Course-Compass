@@ -1,87 +1,122 @@
-import QtQuick 2.15
+import QtQuick 2.6
 import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.3
 
-Window {
+
+ApplicationWindow {
     width: 1920
     height: 1080
     visible: true
     title: qsTr("Course Compass")
+    header: ToolBar {
+        RowLayout {
+            anchors.fill: parent
+            ToolButton {
+                text: '...'
 
-    ColumnLayout {
-        id: mainLayout
-        anchors.fill: parent
-
-        Rectangle {
-            id: tabBarContainer
-            Layout.fillWidth: true
-            Layout.preferredHeight: tabBar.implicitHeight
-            z: 1
-            TabBar {
-                id: tabBar
+                onClicked: {
+                    menu.open();
+                }
+            }
+            Label {
+                id: title
+                text: 'Course NavBar'
+                elide: Label.ElideRight
+                horizontalAlignment: Qt.AlignHCenter
+                verticalAlignment: Qt.AlignVCenter
                 Layout.fillWidth: true
             }
-        }
+            // ToolButton {
+            //     text: '<'
 
-        Component {
-            id: tabButtonComponent
-            TabButton {}
-        }
-
-        Button {
-            text: "Add Page"
-            Layout.alignment: Qt.AlignHCenter
-
-            onClicked: {
-                var ta = tabButtonComponent.createObject(tabBar, {text: "Tab " + (tabBar.count + 1)})
-                tabBar.addTab(tab)
-            }
-        }
-
-
-        Rectangle {
-            id: page
-            width: Constants.width
-            height: Constants.height
-            z: 0
-            color: Constants.backgroundColor
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            Column {
-                id: paneSeparatorColumn
-                width: parent.width
-                height: parent.height
-                anchors.left: parent.left
-                anchors.right: parent.right
-                transformOrigin: Item.Center
-                spacing: 32
-                rightPadding: 32
-                leftPadding: 0
-                bottomPadding: 32
-                topPadding: 32
-
-                Row { // Top part with current courses, and recommended action boxes, progress tracker.
-                    id: informationRow
-                    width: parent.width
-                    height: 296
-                    topPadding: 0
-                    rightPadding: 16
-                    leftPadding: 48
-                    spacing: 32
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-
-                    CourseBox {}
-
-                    RecommendedActionBox {}
-
-                    ProgressTrackerBox {}
-                }
-
-                ItemPane {}
+            //     onClicked: {
+            //         stack.pop();
+            //     }
+            // }
+            ToolButton {
+                text: "Add Course"
             }
         }
     }
+
+    StackView {
+        id: stack
+        anchors.fill: parent
+        initialItem: initialCondition
+        pushEnter: StackView.Immediate
+        popExit: StackView.Immediate
+        transitions: []
+    }
+
+    Menu {
+        id: menu
+
+        MenuItem {
+            text: 'Course 1'
+            onClicked: {
+               if (stack.currentItem !== initialCondition){
+                    //save current contents in the mainLayout to database
+                   //reset mainLayout
+               }
+               title.text = 'Course 1'
+               if (stack.currentItem !== firstMainLayout){
+                    stack.push(firstMainLayout);
+               }
+            }
+        }
+        MenuItem {
+            text: 'Course 2'
+
+            onClicked: {
+                if (stack.currentItem !== initialCondition){
+                     //save current contents in the mainLayout to database
+                    //reset mainLayout
+                }
+                title.text = 'Course 2'
+                if (stack.currentItem !== secondMainLayout){
+                     stack.push(secondMainLayout);
+                }
+            }
+        }
+        MenuItem {
+            text: 'Course 3'
+
+            onClicked: {
+                if (stack.currentItem !== initialCondition){
+                     //save current contents in the mainLayout to database
+                    //reset mainLayout
+                }
+                title.text = 'Course 3'
+                if (stack.currentItem !== thirdMainLayout){
+                     stack.push(thirdMainLayout);
+                }
+            }
+        }
+    }
+    ColumnLayout {
+        id: firstMainLayout
+        anchors.fill: parent
+        visible: false
+        TemplatePage {}
+    }
+    ColumnLayout {
+        id: secondMainLayout
+        anchors.fill: parent
+        visible: false
+        TemplatePage {}
+    }
+
+    ColumnLayout {
+        id: thirdMainLayout
+        anchors.fill: parent
+        visible: false
+        TemplatePage {}
+    }
+    ColumnLayout {
+        id: initialCondition
+        anchors.fill: parent
+        TitleImage {}
+    }
+
 }
