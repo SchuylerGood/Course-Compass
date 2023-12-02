@@ -11,7 +11,7 @@ class Page : public QObject
 public:
     explicit Page(QObject *parent = nullptr);
 
-    Q_INVOKABLE QStringList getStringList();
+    void addNewPage();
 };
 
 #endif // PAGE_H

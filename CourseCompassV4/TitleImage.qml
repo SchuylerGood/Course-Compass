@@ -6,6 +6,6 @@ import QtQuick.Layouts 1.15
 
 Image {
     id: dashTestTitle
-    source: "Untitled design.png"
+    source: "Logo.png"
     anchors.centerIn: parent
     }

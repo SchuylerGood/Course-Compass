@@ -16,107 +16,76 @@ ApplicationWindow {
                 text: '...'
 
                 onClicked: {
-                    menu.open();
+                    contextMenu.open();
                 }
             }
+
             Label {
                 id: title
-                text: 'Course NavBar'
+                text: 'Page NavBar'
                 elide: Label.ElideRight
                 horizontalAlignment: Qt.AlignHCenter
                 verticalAlignment: Qt.AlignVCenter
                 Layout.fillWidth: true
             }
-            // ToolButton {
-            //     text: '<'
 
-            //     onClicked: {
-            //         stack.pop();
-            //     }
-            // }
+            TextField {
+                id: pageNameField
+                width: 50
+                placeholderText: "Enter page name"
+                font.pixelSize: 16
+            }
+
             ToolButton {
-                text: "Add Course"
+                id: deletePageButton
+                text: "Delete Page"
+                onClicked: {
+                    deletePage()
+                }
+
+                function deletePage() {
+                    for (var i = 0; i < menuItems.count; i++) {
+                        console.log("Comparing " + menuItems.get(i).text + " to " + pageNameField.text);
+                        if (menuItems.get(i).text === pageNameField.text) {
+                            menuItems.remove(i);
+                            console.log("Deleted " + pageNameField.text);
+                        }
+                    }
+                }
+            }
+
+            ToolButton {
+                id: addPageButton
+                text: "Add Page"
+                onClicked: {
+                    menuItems.append({"text": pageNameField.text})
+                }
             }
         }
     }
 
-    StackView {
-        id: stack
-        anchors.fill: parent
-        initialItem: initialCondition
-        pushEnter: StackView.Immediate
-        popExit: StackView.Immediate
-        transitions: []
+    ListModel{
+        id: menuItems
+
+        ListElement{
+            text: "Winter"
+        }
+        ListElement{
+            text: "Fall"
+        }
     }
 
     Menu {
-        id: menu
+        id: contextMenu
 
-        MenuItem {
-            text: 'Course 1'
-            onClicked: {
-               if (stack.currentItem !== initialCondition){
-                    //save current contents in the mainLayout to database
-                   //reset mainLayout
-               }
-               title.text = 'Course 1'
-               if (stack.currentItem !== firstMainLayout){
-                    stack.push(firstMainLayout);
-               }
-            }
-        }
-        MenuItem {
-            text: 'Course 2'
+        Instantiator {
+           model: menuItems
+           MenuItem {
+              text: model.text
+           }
 
-            onClicked: {
-                if (stack.currentItem !== initialCondition){
-                     //save current contents in the mainLayout to database
-                    //reset mainLayout
-                }
-                title.text = 'Course 2'
-                if (stack.currentItem !== secondMainLayout){
-                     stack.push(secondMainLayout);
-                }
-            }
-        }
-        MenuItem {
-            text: 'Course 3'
-
-            onClicked: {
-                if (stack.currentItem !== initialCondition){
-                     //save current contents in the mainLayout to database
-                    //reset mainLayout
-                }
-                title.text = 'Course 3'
-                if (stack.currentItem !== thirdMainLayout){
-                     stack.push(thirdMainLayout);
-                }
-            }
-        }
+           onObjectAdded: contextMenu.insertItem(index, object)
+           onObjectRemoved: contextMenu.removeItem(object)
+       }
     }
-    ColumnLayout {
-        id: firstMainLayout
-        anchors.fill: parent
-        visible: false
-        TemplatePage {}
-    }
-    ColumnLayout {
-        id: secondMainLayout
-        anchors.fill: parent
-        visible: false
-        TemplatePage {}
-    }
-
-    ColumnLayout {
-        id: thirdMainLayout
-        anchors.fill: parent
-        visible: false
-        TemplatePage {}
-    }
-    ColumnLayout {
-        id: initialCondition
-        anchors.fill: parent
-        TitleImage {}
-    }
-
 }
