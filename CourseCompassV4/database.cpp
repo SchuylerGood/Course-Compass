@@ -90,22 +90,3 @@ void JSDB::loadPageData(Page* page) {
 */
 //load data to the page object
 
-
-void JSDB::loadPageData(Page* page) {
-    if (!page) {
-        qWarning() << "JSDB: Page pointer is null.";
-        return;
-    }
-    // Example of loading data into the Page object
-    // This assumes that Page class has methods or properties to set data
-    for (const QString& key : database_.keys()) {
-        QVariant value = database_.value(key);
-
-        // Here you should call a method of the Page class or set its properties
-        // For example, if Page has a method `setData(QString key, QVariant value)`
-
-        page->setData(key, value); //Set data is a method to be defined in the Page class. Key would be the type of value, value would be the actual data. ex DueDay, 12th
-    }
-
-    qDebug() << "JSDB: Data loaded into Page object.";
-}
