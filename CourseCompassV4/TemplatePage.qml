@@ -6,13 +6,14 @@ import QtQuick.Layouts 1.15
 
 Rectangle {
     id: page
-    width: Constants.width
-    height: Constants.height
+    width: screenWidth
+    height: screenHeight
     z: 0
     color: Constants.backgroundColor
     Layout.fillWidth: true
     Layout.fillHeight: true
 
+    /*
     Column {
         id: paneSeparatorColumn
         width: parent.width
@@ -25,25 +26,24 @@ Rectangle {
         leftPadding: 0
         bottomPadding: 32
         topPadding: 32
+    */
 
-        Row { // Top part with current courses, and recommended action boxes, progress tracker.
-            id: informationRow
-            width: parent.width
-            height: 296
-            topPadding: 0
-            rightPadding: 16
-            leftPadding: 48
-            spacing: 32
-            anchors.left: parent.left
-            anchors.right: parent.right
+    Row { // Top part with current courses, and recommended action boxes, progress tracker.
+        id: informationRow
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        topPadding: 40
+        leftPadding: 40
+        rightPadding: 40
+        spacing: 32
+        height: parent.height / 3
 
-            CourseBox {}
-
-            RecommendedActionBox {}
-
-            ProgressTrackerBox {}
-        }
-
-        ItemPane {}
+        CourseBox {}
+        RecommendedActionBox {}
+        ProgressTrackerBox {}
     }
+
+    ItemPane {}
 }
+//}

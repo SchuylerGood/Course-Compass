@@ -5,19 +5,17 @@ import QtQuick.Controls 2.15
 Rectangle { // = rab
     id: recommendedActionBox
     width: (parent.width / 3) - 54
-    height: 296
+    height: parent.height - 40
     color: "#ECECEC"
     radius: 32
 
-    Text { //cb = course box
-        id: cbHeader
+    Text {
+        id: rabHeader
         anchors.top: parent.top
+        anchors.topMargin: 20
         anchors.left: parent.left
-        anchors.topMargin: 24
-        anchors.leftMargin: 40
-        width: 300
-        height: 48
-        text: qsTr("Recommended Actions")
+        anchors.leftMargin: 30
+        text: qsTr("Recommended Action")
         font.pixelSize: 32
         font.bold: true
     }
@@ -31,7 +29,7 @@ Rectangle { // = rab
 
         Rectangle { // Container for the list
             color: "#ECECEC"
-            height: 150
+            height: parent.height - rabHeader.height - 50 // Header margin * 2 plus 10 extra space units
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width * 0.9
             radius: 32

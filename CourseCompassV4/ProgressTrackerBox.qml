@@ -6,16 +6,16 @@ import QtQuick.Shapes
 Rectangle { // = ptb
     id: progressTrackerBox
     width: (parent.width / 3) - 54
-    height: 296
+    height: parent.height - 40
     color: "#ECECEC"
     radius: 32
 
-    Text { //cb = course box
-        id: cbHeader
-        x: 40
-        y: 24
-        width: 291
-        height: 45
+    Text {
+        id: ptbHeader
+        anchors.top: parent.top
+        anchors.topMargin: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 30
         text: qsTr("Progress Tracker")
         font.pixelSize: 32
         font.bold: true

@@ -5,7 +5,7 @@ import QtQuick.Controls 2.15
 Rectangle {
     id: courseBox
     width: (parent.width / 3) - 54
-    height: 296
+    height: parent.height - 40
     color: "#ECECEC"
     radius: 32
 
@@ -20,10 +20,10 @@ Rectangle {
 
     Text { //cb = course box
         id: cbHeader
-        x: 40
-        y: 24
-        width: 291
-        height: 45
+        anchors.top: parent.top
+        anchors.topMargin: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 30
         text: qsTr("Current Courses")
         font.pixelSize: 32
         font.bold: true

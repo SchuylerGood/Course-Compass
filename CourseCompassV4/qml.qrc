@@ -7,7 +7,7 @@
         <file>ProgressTrackerBox.qml</file>
         <file>Tabs.qml</file>
         <file>TemplatePage.qml</file>
-        <file>TitleImage.qml</file>
         <file>Logo.png</file>
+        <file>SplashPage.qml</file>
     </qresource>
 </RCC>

@@ -9,8 +9,10 @@ Rectangle {
     color: "#00ffffff"
     radius: 0
     transformOrigin: Item.Center
+    anchors.top: informationRow.bottom
     anchors.left: parent.left
     anchors.right: parent. right
+    anchors.topMargin: 30
     anchors.leftMargin: 48
     anchors.rightMargin: 48
 

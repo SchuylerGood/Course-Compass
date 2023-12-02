@@ -5,8 +5,8 @@ import QtQuick.Layouts 1.3
 
 
 ApplicationWindow {
-    width: 1920
-    height: 1080
+    width: screenWidth
+    height: screenHeight
     visible: true
     title: qsTr("Dash Dest")
     header: ToolBar {
@@ -29,6 +29,13 @@ ApplicationWindow {
                 Layout.fillWidth: true
             }
 
+            ToolButton {
+                text: "Temporary Page Button"
+                onClicked: {
+                    stackView.push("TemplatePage.qml")
+                }
+            }
+
             TextField {
                 id: pageNameField
                 width: 50
@@ -45,10 +52,8 @@ ApplicationWindow {
 
                 function deletePage() {
                     for (var i = 0; i < menuItems.count; i++) {
-                        console.log("Comparing " + menuItems.get(i).text + " to " + pageNameField.text);
                         if (menuItems.get(i).text === pageNameField.text) {
                             menuItems.remove(i);
-                            console.log("Deleted " + pageNameField.text);
                         }
                     }
                 }
@@ -62,6 +67,13 @@ ApplicationWindow {
                 }
             }
         }
+    }
+
+    StackView {
+        id: stackView
+        anchors.fill: parent
+
+        initialItem: "SplashPage.qml"
     }
 
     ListModel{

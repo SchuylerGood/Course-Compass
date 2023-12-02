@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QScreen>
 #include "page.h"
 
 int main(int argc, char *argv[])
@@ -26,6 +27,12 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         },
         Qt::QueuedConnection);
+
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QSize screenSize = screen->size();
+
+    engine.rootContext()->setContextProperty("screenWidth", screenSize.width());
+    engine.rootContext()->setContextProperty("screenHeight", screenSize.height());
 
     engine.load(url); // This loads the main qml file into the engine
 
