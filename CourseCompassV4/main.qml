@@ -8,7 +8,7 @@ ApplicationWindow {
     width: 1920
     height: 1080
     visible: true
-    title: qsTr("Course Compass")
+    title: qsTr("Dash Dest")
     header: ToolBar {
         RowLayout {
             anchors.fill: parent
