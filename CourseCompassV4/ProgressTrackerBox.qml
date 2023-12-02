@@ -22,83 +22,59 @@ Rectangle { // = ptb
     }
 
     Rectangle{
-        id: progressTrackerBoxWhite
-        anchors.top: cbHeader.bottom
-        anchors.topMargin: 0
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: 300
-        height: 200
+        anchors.top: ptbHeader.bottom
+        anchors.topMargin: 10
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        anchors.right: parent.right
+        anchors.rightMargin: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 20
         color: "white"
-        radius: 32
+        radius: 8
 
-        Column {
-            id: separateProgress
-            x: 0
-            y: 0
-            width: 1920
-            height: 1080
-            transformOrigin: Item.Center
-            spacing: 32
-            rightPadding: 32
-            leftPadding: 0
-            bottomPadding: 32
-            topPadding: 32
+        Item {
+            width: 200
+            height: 200
 
-            Shape {
-                width: 200
-                height: 200
-                scale: 0.7
-                anchors.centerIn: progressTrackerBoxWhite
-                //Enable multisampled rendering
-                layer.enabled: true
-                layer.samples: 4
 
-                ShapePath {
-                    fillColor: "transparent"
-                    strokeColor: "gray"
-                    strokeWidth: 20
-                    capStyle: ShapePath.RoundCap
-                    PathAngleArc {
-                        centerX: 100; centerY: 100
-                        radiusX: 100-20/2; radiusY: 100-20/2
-                        startAngle: 135
-                        sweepAngle: 270
-                    }
-                }
 
-                ShapePath {
-                    fillColor: "transparent"
-                    strokeColor: "blue"
-                    strokeWidth: 20
-                    capStyle: ShapePath.RoundCap
-                    PathAngleArc {
-                        centerX: 100; centerY: 100
-                        radiusX: 100-20/2; radiusY: 100-20/2
-                        startAngle: 135
-                        sweepAngle: 180
-                    }
+            Canvas {
+                id: canvas
+                anchors.fill: parent
+
+                property real done: 0.6
+                property real inProgress: 0.1
+                property real notStarted: 0.3
+
+                onPaint: {
+                    var centerX = width / 2;
+                    var centerY = height / 2;
+                    var radius = Math.min(width, height) / 2;
+
+                    var ctx = getContext("2d");
+                    ctx.clearRect(0, 0, width, height);
+
+                    // Draw completed (green) arc
+                    ctx.strokeStyle = "green";
+                    ctx.lineWidth = 20;
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius - ctx.lineWidth / 2, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * done);
+                    ctx.stroke();
+
+                    // Draw in progress (yellow) arc
+                    ctx.strokeStyle = "yellow";
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius - ctx.lineWidth / 2, -Math.PI / 2 + 2 * Math.PI * done, -Math.PI / 2 + 2 * Math.PI * done + 2 * Math.PI * inProgress);
+                    ctx.stroke();
+
+                    // Draw not started (blue) arc
+                    ctx.strokeStyle = "blue";
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius - ctx.lineWidth / 2, -Math.PI / 2 + 2 * Math.PI * done + 2 * Math.PI * inProgress, -Math.PI / 2 + 2 * Math.PI * done + 2 * Math.PI * inProgress + 2 * Math.PI * notStarted);
+                    ctx.stroke();
                 }
             }
         }
-
-        Text {
-            id: complete
-            text: "Completed"
-            font.pixelSize: 16
-            color: "blue"
-            x: 180
-            y: 80
-            anchors.verticalCenter: Shape
-        }
-
-        Text {
-            text: "To Do"
-            font.pixelSize: 16
-            color: "gray"
-            x: 180
-            y: 120
-        }
     }
-
-
 }

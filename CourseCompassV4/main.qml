@@ -63,7 +63,13 @@ ApplicationWindow {
                 id: addPageButton
                 text: "Add Page"
                 onClicked: {
-                    menuItems.append({"text": pageNameField.text})
+                    addPage();
+                }
+
+                function addPage() {
+                    if (pageNameField.text !== "") {
+                        menuItems.append({"text": pageNameField.text});
+                    }
                 }
             }
         }
@@ -78,13 +84,6 @@ ApplicationWindow {
 
     ListModel{
         id: menuItems
-
-        ListElement{
-            text: "Winter"
-        }
-        ListElement{
-            text: "Fall"
-        }
     }
 
     Menu {
