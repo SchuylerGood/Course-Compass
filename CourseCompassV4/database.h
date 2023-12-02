@@ -13,10 +13,6 @@ public:
     void addCourse(void* ptr);
     QVariant getEntry(const QString& key) const;
     void save() const;
-    void load(void* target);
-
-
-    //void loadPageData(Page* page);        //Page* is a pointer to the object of a page class
 
 private:
     void load();
