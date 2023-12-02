@@ -22,6 +22,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         page.h page.cpp
+        navbar.h navbar.cpp
+        course.h course.cpp
+        item.h item.cpp
 
 
     )
