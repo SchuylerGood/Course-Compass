@@ -10,6 +10,11 @@ Rectangle { // = ptb
     color: "#ECECEC"
     radius: 32
 
+    property real totalProjects: 100
+    property real done: 0.6
+    property real inProgress: 0.1
+    property real notStarted: 0.3
+
     Text {
         id: ptbHeader
         anchors.top: parent.top
@@ -22,6 +27,7 @@ Rectangle { // = ptb
     }
 
     Rectangle{
+        id: contentHolder
         anchors.top: ptbHeader.bottom
         anchors.topMargin: 10
         anchors.bottom: parent.bottom
@@ -33,19 +39,18 @@ Rectangle { // = ptb
         color: "white"
         radius: 8
 
-        Item {
-            width: 200
-            height: 200
-
-
+        Rectangle {
+            id: canvasHolder
+            width: parent.height - 40
+            height: parent.height - 40
+            anchors.left: parent.left
+            anchors.leftMargin: 40
+            anchors.top: parent.top
+            anchors.topMargin: 20
 
             Canvas {
                 id: canvas
                 anchors.fill: parent
-
-                property real done: 0.6
-                property real inProgress: 0.1
-                property real notStarted: 0.3
 
                 onPaint: {
                     var centerX = width / 2;
@@ -57,7 +62,7 @@ Rectangle { // = ptb
 
                     // Draw completed (green) arc
                     ctx.strokeStyle = "green";
-                    ctx.lineWidth = 20;
+                    ctx.lineWidth = 40;
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, radius - ctx.lineWidth / 2, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * done);
                     ctx.stroke();
@@ -73,6 +78,99 @@ Rectangle { // = ptb
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, radius - ctx.lineWidth / 2, -Math.PI / 2 + 2 * Math.PI * done + 2 * Math.PI * inProgress, -Math.PI / 2 + 2 * Math.PI * done + 2 * Math.PI * inProgress + 2 * Math.PI * notStarted);
                     ctx.stroke();
+                }
+            }
+
+            Rectangle {
+                height: 80
+                width: 100
+                anchors.centerIn: parent
+                Text {
+                    id: totalValue
+                    anchors.top: parent.top
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: totalProjects
+                    font.pixelSize: 32
+                    font.bold: true
+                }
+                Text {
+                    id: totalText
+                    anchors.top: totalValue.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "Total Assigned"
+                    font.pixelSize: 20
+                }
+            }
+        }
+
+        Column {
+            width: contentHolder.width / 2 - 40
+            height: parent.height
+            anchors.left: canvasHolder.right
+            anchors.right: parent.right
+            spacing: 5
+            padding: 20
+
+            Rectangle {
+                height: parent.height / 3 - 20
+                width: parent.width - 40
+                Text {
+                    id: doneValue
+                    anchors.top: parent.top
+                    anchors.topMargin: 5
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: totalProjects * done
+                    font.pixelSize: 32
+                    font.bold: true
+                }
+                Text {
+                    id: doneText
+                    anchors.top: doneValue.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "Completed"
+                    font.pixelSize: 20
+                }
+            }
+
+            Rectangle {
+                height: parent.height / 3 - 20
+                width: parent.width - 40
+                Text {
+                    id: inProgressValue
+                    anchors.top: parent.top
+                    anchors.topMargin: 5
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: totalProjects * inProgress
+                    font.pixelSize: 32
+                    font.bold: true
+                }
+                Text {
+                    id: inProgressText
+                    anchors.top: inProgressValue.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "In Progress"
+                    font.pixelSize: 20
+                }
+            }
+
+            Rectangle {
+                height: parent.height / 3 - 20
+                width: parent.width - 40
+                Text {
+                    id: notStartedValue
+                    anchors.top: parent.top
+                    anchors.topMargin: 5
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: totalProjects * notStarted
+                    font.pixelSize: 32
+                    font.bold: true
+                }
+                Text {
+                    id: notStartedText
+                    anchors.top: notStartedValue.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "Not Started"
+                    font.pixelSize: 20
                 }
             }
         }
