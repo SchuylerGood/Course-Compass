@@ -24,6 +24,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         page.h page.cpp
         navbar.h navbar.cpp
         course.h course.cpp
+        database.h database.cpp
         item.h item.cpp
 
 

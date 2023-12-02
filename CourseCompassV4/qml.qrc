@@ -9,5 +9,6 @@
         <file>TemplatePage.qml</file>
         <file>Logo.png</file>
         <file>SplashPage.qml</file>
+        <file>ItemPaneHeaders.qml</file>
     </qresource>
 </RCC>
