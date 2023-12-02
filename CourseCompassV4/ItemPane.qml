@@ -34,157 +34,214 @@ Rectangle {
             border.color: "#d9d9d9"
             border.width: 2
 
-            Button {
-                id: addNewItemButton
-                z: 2
-                anchors.right: parent.right
-                anchors.rightMargin: 24
-                anchors.top: parent.top
-                width: 32
-                height: 32
-                text: qsTr("+")
-                spacing: 0
-                flat: true
-                font.pointSize: 24
-                font.bold: true
-                onClicked: {
-                    itemsListModel.append({ "Course": "CISC 101", "Status": "Not Started","Type":"Assignment","Name":"Assignment 4: Quantom Theory","DueDate":"12/10/23","LatePolicy":"3 Day grace period","Score":"7","GradePercentage":"8" });
+            Grid {
+                id: columnLabelGrid
+                x: 0
+                y: 0
+                width: 2000
+                height: 672
+                rows: 1
+                columns: 8
+
+                Rectangle {
+                    id: course
+                    width: 112
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label
+                        x: 37
+                        y: 12
+                        text: qsTr("Course")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: status
+                    width: 112
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label1
+                        x: 37
+                        y: 12
+                        text: qsTr("Status")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: type
+                    width: 112
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label2
+                        x: 37
+                        y: 12
+                        text: qsTr("Type")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: name
+                    width: 286
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label3
+                        x: 37
+                        y: 12
+                        text: qsTr("Name")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: dueDate
+                    width: 168
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label4
+                        x: 30
+                        y: 12
+                        text: qsTr("Due Date")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: latePolicy
+                    width: 168
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label5
+                        x: 26
+                        y: 12
+                        text: qsTr("Late Policy")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: score
+                    width: 112
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label6
+                        x: 41
+                        y: 12
+                        text: qsTr("Score")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                Rectangle {
+                    id: grade
+                    width: 112
+                    height: 40
+                    color: "#ffffff"
+                    border.color: "#d9d9d9"
+                    border.width: 2
+
+                    Text {
+                        id: label7
+                        x: 6
+                        y: 12
+                        text: qsTr("Grade Percentage")
+                        font.pixelSize: 12
+                        font.bold: true
+                    }
+                }
+
+                // Reapeter
+                Repeater {
+//                    model: columnLabelGrid.rows * columnLabelGrid.columns This generates a whole row of duplicates
+                    model: columnLabelGrid.rows
+
+                    Rectangle {
+                        id: rectangle3
+                        width: 96
+                        height: 32
+                        color: "#ffdebf"
+                        radius: 16
+                        border.color: "#d9d9d9"
+                        border.width: 0
+
+                        TextField {
+                            id: itemNameField
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.left: courseColorCircle.right
+                            anchors.leftMargin: 20
+                            width: (parent.width - courseColorCircle.width) / 3 // Adjust width as needed
+                            placeholderText: "Enter course code"
+                            text: courseCode // Bind to the model data
+                            font.bold: true
+                            font.pixelSize: 16
+                            onTextChanged: {
+                                // Update the model data when the text changes
+                                courseListModel.setProperty(index, "courseCode", courseCodeField.text)
+                            }
+                        }
+                    }
                 }
             }
 
-            ItemPaneHeaders {}
-
-            Rectangle {
-                anchors.fill: parent
+            // TTHIS HOLDS ALL THE ITEMS!!!!
+            Column {
+                id: itemHolder
+                anchors.left: parent.left
+                anchors.leftMargin: 0
+                anchors.top: parent.top
                 anchors.topMargin: 40
-                anchors.leftMargin: 2
-                anchors.rightMargin: 2
-                anchors.bottomMargin: 2
+                width: 1181
+                height: 633
 
-                ListModel {
-                    id: itemsListModel
-                }
-
-                ListView {
-                    anchors.fill: parent
-                    model: itemsListModel
-                    clip: true
-                    spacing: 5
-                    delegate: Rectangle {
-                        height: 40
-                        width: parent.width
-
-                        Rectangle {
-                            id: courseTag
-                            anchors.left: parent.left
-                            width: 112
-                            height: 40
-                            color: "red"
-
-                            Text {
-                                id: courseTagText
-                                anchors.fill: parent
-                                text: Course
-                            }
-                        }
-
-                        Rectangle {
-                            id: statusTag
-                            anchors.left: courseTag.right
-                            width: 112
-                            height: 40
-                            color: "blue"
-
-                            Text {
-                                id: statusTagText
-                                anchors.fill: parent
-                                text: Status
-                            }
-                        }
-
-                        Rectangle {
-                            id: typeTag
-                            anchors.left:statusTag.right
-                            width: 112
-                            height: 40
-                            color: "yellow"
-
-                            Text {
-                                id: typeTagText
-                                anchors.fill: parent
-                                text: Type
-                            }
-                        }
-
-                        Rectangle {
-                            id: nameTag
-                            anchors.left:typeTag.right
-                            width: 286
-                            height: 40
-                            color: "purple"
-
-                            Text {
-                                id: nameTagText
-                                anchors.fill: parent
-                                text: Name
-                            }
-                        }
-
-                        Rectangle {
-                            id: dueDateTag
-                            anchors.left:nameTag.right
-                            width: 168
-                            height: 40
-                            color: "pink"
-
-                            Text {
-                                id: dueDateText
-                                anchors.fill: parent
-                                text: DueDate
-                            }
-                        }
-
-                        Rectangle {
-                            id: latePolicyTag
-                            anchors.left:dueDateTag.right
-                            width: 168
-                            height: 40
-                            color: "red"
-
-                            Text {
-                                id: latePolicyText
-                                anchors.fill: parent
-                                text: LatePolicy
-                            }
-                        }
-
-                        Rectangle {
-                            id: scoreTag
-                            anchors.left:latePolicyTag.right
-                            width: 112
-                            height: 40
-                            color: "green"
-
-                            Text {
-                                id: scoreText
-                                anchors.fill: parent
-                                text: Score
-                            }
-                        }
-
-                        Rectangle {
-                            id: gradePercentageTag
-                            anchors.left:scoreTag.right
-                            width: 112
-                            height: 40
-                            color: "orange"
-
-                            Text {
-                                id: gradePercentageText
-                                anchors.fill: parent
-                                text: GradePercentage
-                            }
-                        }
+                // Add Item
+                Button {
+                    id: itemAdd
+                    width: 32
+                    height: 32
+                    text: qsTr("+")
+                    spacing: 0
+                    flat: true
+                    font.pointSize: 24
+                    font.bold: true
+                    onClicked: {
+                        columnLabelGrid.rows += 1;
                     }
                 }
             }
