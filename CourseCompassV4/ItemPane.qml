@@ -23,7 +23,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
 
-        Tabs {}
+        // Tabs {}
 
         Rectangle {
             id: itemsPane

@@ -101,13 +101,13 @@ Rectangle {
                     anchors.leftMargin: 20
                     width: (parent.width - courseColorCircle.width) / 3 // Adjust width as needed
                     placeholderText: "Enter course code"
-                    text: courseCode // Bind to the model data
                     font.bold: true
                     font.pixelSize: 16
                     onTextChanged: {
                         // Update the model data when the text changes
                         courseListModel.setProperty(index, "courseCode", courseCodeField.text)
                     }
+                    background: Rectangle {}
                 }
 
                 // Editable TextField for course name
@@ -119,12 +119,12 @@ Rectangle {
                     anchors.leftMargin: 20
                     width: parent.width - courseCodeField.width - courseColorCircle.width - 100 // Adjust width as needed
                     placeholderText: "Enter course name"
-                    text: courseName // Bind to the model data
                     font.pixelSize: 14
                     onTextChanged: {
                        // Update the model data when the text changes
                        courseListModel.setProperty(index, "courseName", courseNameField.text)
                     }
+                    background: Rectangle {}
                 }
 
                 Rectangle {

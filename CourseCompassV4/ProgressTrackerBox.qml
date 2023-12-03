@@ -12,8 +12,8 @@ Rectangle { // = ptb
 
     property real totalProjects: 100
     property real done: 0.6
-    property real inProgress: 0.1
-    property real notStarted: 0.3
+    property real inProgress: 0.2
+    property real notStarted: 0.2
 
     Text {
         id: ptbHeader
