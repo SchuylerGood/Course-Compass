@@ -107,5 +107,6 @@ void JSDB::load_() {
 /*
 // load data to the navbar class
 void JSDB::load(navbar* target) {
+*/
 
 
