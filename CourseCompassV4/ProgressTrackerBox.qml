@@ -82,15 +82,15 @@ Rectangle { // = ptb
             }
 
             Rectangle {
-                height: 80
-                width: 100
+                height: 60
+                width: 80
                 anchors.centerIn: parent
                 Text {
                     id: totalValue
                     anchors.top: parent.top
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: totalProjects
-                    font.pixelSize: 32
+                    font.pixelSize: 20
                     font.bold: true
                 }
                 Text {
@@ -98,7 +98,7 @@ Rectangle { // = ptb
                     anchors.top: totalValue.bottom
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: "Total Assigned"
-                    font.pixelSize: 20
+                    font.pixelSize: 16
                 }
             }
         }
