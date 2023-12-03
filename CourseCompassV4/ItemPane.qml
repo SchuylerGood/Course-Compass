@@ -48,7 +48,7 @@ Rectangle {
                 font.pointSize: 24
                 font.bold: true
                 onClicked: {
-                    itemsListModel.append({ "Course": "CISC 101", "Status": "Not Started","Type":"Assignment","Name":"Assignment 4: Quantom Theory","DueDate":"12/10/23","LatePolicy":"3 Day grace period","Score":"7","GradePercentage":"8" });
+                    itemsListModel.append({ "Course": "CISC 101", "Status": "Not Started","Type":"📄 Assignment","Name":"Assignment 4: Quantom Theory","DueDate":"12/10/23","LatePolicy":"3 Day grace period","Score":"7","GradePercentage":"8" });
                 }
             }
 
@@ -77,112 +77,166 @@ Rectangle {
                         Rectangle {
                             id: courseTag
                             anchors.left: parent.left
-                            width: 112
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "red"
+                            color: "#FFBFBF"
+                            radius: 32
 
-                            Text {
+                            TextField {
                                 id: courseTagText
-                                anchors.fill: parent
-                                text: Course
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {color:courseTag.color}
+                                placeholderText: "ex. CISC 101"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "Course", courseTagText.text)
+                                }
                             }
-                        }
 
+                        }
                         Rectangle {
                             id: statusTag
                             anchors.left: courseTag.right
-                            width: 112
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "blue"
+                            color: "#F1F0EF"
+                            radius: 32
 
-                            Text {
-                                id: statusTagText
-                                anchors.fill: parent
-                                text: Status
+                            TextField {
+                                id: statusTagText                                
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {color: statusTag.color}
+                                placeholderText: "Not Started, In Progress, Completed"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "Status", statusTagText.text)
+                                }
                             }
                         }
 
                         Rectangle {
                             id: typeTag
                             anchors.left:statusTag.right
-                            width: 112
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "yellow"
+                            color: "#FDECC8"
+                            radius: 32
 
-                            Text {
+                            TextField {
                                 id: typeTagText
-                                anchors.fill: parent
-                                text: Type
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {color: typeTag.color}
+                                placeholderText: "Ex. Assignment, Quiz, Test"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "Type", typeTagText.text)
+                                }
                             }
                         }
 
                         Rectangle {
                             id: nameTag
                             anchors.left:typeTag.right
-                            width: 286
+                            width: itemsPane.width / 9 * 2
                             height: 40
-                            color: "purple"
 
-                            Text {
+                            TextField {
                                 id: nameTagText
-                                anchors.fill: parent
-                                text: Name
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {}
+                                placeholderText: "ex. Assignment 1: Quantom Theory"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "Name", nameTagText.text)
+                                }
                             }
                         }
 
                         Rectangle {
                             id: dueDateTag
                             anchors.left:nameTag.right
-                            width: 168
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "pink"
 
-                            Text {
+                            TextField {
                                 id: dueDateText
-                                anchors.fill: parent
-                                text: DueDate
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {}
+                                placeholderText: "Due date"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "DueDate", dueDateText.text)
+                                }
                             }
                         }
 
                         Rectangle {
                             id: latePolicyTag
                             anchors.left:dueDateTag.right
-                            width: 168
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "red"
 
-                            Text {
+                            TextField {
                                 id: latePolicyText
-                                anchors.fill: parent
-                                text: LatePolicy
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {}
+                                placeholderText: "ex. 1 day grace period"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "LatePolicy", latePolicyText.text)
+                                }
                             }
                         }
 
                         Rectangle {
                             id: scoreTag
                             anchors.left:latePolicyTag.right
-                            width: 112
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "green"
 
-                            Text {
+                            TextField {
                                 id: scoreText
-                                anchors.fill: parent
-                                text: Score
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {}
+                                placeholderText: "score"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "Score", scoreText.text)
+                                }
                             }
                         }
 
                         Rectangle {
                             id: gradePercentageTag
                             anchors.left:scoreTag.right
-                            width: 112
+                            width: itemsPane.width / 9
                             height: 40
-                            color: "orange"
 
-                            Text {
+                            TextField {
                                 id: gradePercentageText
-                                anchors.fill: parent
-                                text: GradePercentage
+                                anchors.centerIn: parent
+                                font.pixelSize: 14
+                                font.bold: true
+                                width: parent.width - 20
+                                background: Rectangle {}
+                                placeholderText: "scored %"
+                                onTextChanged: {
+                                   itemsListModel.setProperty(index, "GradePercentage", gradePercentageText.text)
+                                }
                             }
                         }
                     }

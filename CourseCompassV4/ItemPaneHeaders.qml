@@ -11,7 +11,7 @@ Grid {
 
     Rectangle {
         id: course
-        width: 112
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -29,7 +29,7 @@ Grid {
 
     Rectangle {
         id: status
-        width: 112
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -47,7 +47,7 @@ Grid {
 
     Rectangle {
         id: type
-        width: 112
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -65,7 +65,7 @@ Grid {
 
     Rectangle {
         id: name
-        width: 286
+        width: itemsPane.width / 9 * 2
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -83,7 +83,7 @@ Grid {
 
     Rectangle {
         id: dueDate
-        width: 168
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -101,7 +101,7 @@ Grid {
 
     Rectangle {
         id: latePolicy
-        width: 168
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -119,7 +119,7 @@ Grid {
 
     Rectangle {
         id: score
-        width: 112
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
@@ -137,7 +137,7 @@ Grid {
 
     Rectangle {
         id: grade
-        width: 112
+        width: itemsPane.width / 9
         height: 40
         color: "#ffffff"
         border.color: "#d9d9d9"
