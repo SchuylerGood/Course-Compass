@@ -62,7 +62,7 @@ Rectangle { // = ptb
 
                     // Draw completed (green) arc
                     ctx.strokeStyle = "green";
-                    ctx.lineWidth = 40;
+                    ctx.lineWidth = 20;
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, radius - ctx.lineWidth / 2, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * done);
                     ctx.stroke();
@@ -116,17 +116,18 @@ Rectangle { // = ptb
                 width: parent.width - 40
                 Text {
                     id: doneValue
-                    anchors.top: parent.top
-                    anchors.topMargin: 5
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: 15
+                    anchors.verticalCenter: parent.verticalCenter
                     text: totalProjects * done
                     font.pixelSize: 32
                     font.bold: true
                 }
                 Text {
                     id: doneText
-                    anchors.top: doneValue.bottom
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: doneValue.right
+                    anchors.leftMargin: 10
+                    anchors.verticalCenter: parent.verticalCenter
                     text: "Completed"
                     font.pixelSize: 20
                 }
@@ -137,17 +138,18 @@ Rectangle { // = ptb
                 width: parent.width - 40
                 Text {
                     id: inProgressValue
-                    anchors.top: parent.top
-                    anchors.topMargin: 5
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: 15
+                    anchors.verticalCenter: parent.verticalCenter
                     text: totalProjects * inProgress
                     font.pixelSize: 32
                     font.bold: true
                 }
                 Text {
                     id: inProgressText
-                    anchors.top: inProgressValue.bottom
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: inProgressValue.right
+                    anchors.leftMargin: 10
+                    anchors.verticalCenter: parent.verticalCenter
                     text: "In Progress"
                     font.pixelSize: 20
                 }
@@ -158,17 +160,18 @@ Rectangle { // = ptb
                 width: parent.width - 40
                 Text {
                     id: notStartedValue
-                    anchors.top: parent.top
-                    anchors.topMargin: 5
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: 15
+                    anchors.verticalCenter: parent.verticalCenter
                     text: totalProjects * notStarted
                     font.pixelSize: 32
                     font.bold: true
                 }
                 Text {
                     id: notStartedText
-                    anchors.top: notStartedValue.bottom
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: notStartedValue.right
+                    anchors.leftMargin: 10
+                    anchors.verticalCenter: parent.verticalCenter
                     text: "Not Started"
                     font.pixelSize: 20
                 }
